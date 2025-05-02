@@ -1,4 +1,4 @@
-use std::{mem, ptr, sync::mpsc::Receiver};
+use std::{mem, ptr};
 
 use image::RgbaImage;
 use scopeguard::guard;
@@ -19,14 +19,10 @@ use windows::{
     },
 };
 
-use crate::{
-    error::{XCapError, XCapResult},
-    video_recorder::Frame,
-};
+use crate::error::{XCapError, XCapResult};
 
 use super::{
     capture::capture_monitor,
-    impl_video_recorder::ImplVideoRecorder,
     utils::{get_monitor_config, get_process_is_dpi_awareness, load_library},
 };
 
@@ -277,9 +273,5 @@ impl ImplMonitor {
         let height = self.height()?;
 
         capture_monitor(x, y, width as i32, height as i32)
-    }
-
-    pub fn video_recorder(&self) -> XCapResult<(ImplVideoRecorder, Receiver<Frame>)> {
-        ImplVideoRecorder::new(self.h_monitor)
     }
 }

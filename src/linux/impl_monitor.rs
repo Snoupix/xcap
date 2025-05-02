@@ -1,4 +1,4 @@
-use std::{ffi::CStr, sync::mpsc::Receiver};
+use std::ffi::CStr;
 
 use image::RgbaImage;
 use xcb::{
@@ -10,14 +10,10 @@ use xcb::{
     Xid,
 };
 
-use crate::{
-    error::{XCapError, XCapResult},
-    video_recorder::Frame,
-};
+use crate::error::{XCapError, XCapResult};
 
 use super::{
     capture::capture_monitor,
-    impl_video_recorder::ImplVideoRecorder,
     utils::{get_atom, get_current_screen_buf, get_monitor_info_buf, get_xcb_connection_and_index},
 };
 
@@ -324,9 +320,5 @@ impl ImplMonitor {
 
     pub fn capture_image(&self) -> XCapResult<RgbaImage> {
         capture_monitor(self)
-    }
-
-    pub fn video_recorder(&self) -> XCapResult<(ImplVideoRecorder, Receiver<Frame>)> {
-        ImplVideoRecorder::new(self.clone())
     }
 }
