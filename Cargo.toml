@@ -1,8 +1,8 @@
 [package]
 name = "xcap"
 version = "0.5.1"
-edition = "2021"
-description = "XCap is a cross-platform screen capture library written in Rust. It supports Linux (X11, Wayland), MacOS, and Windows. XCap supports screenshot and video recording (WIP)."
+edition = "2024"
+description = "XCap is a cross-platform screen capture library written in Rust. It supports Linux (X11, Wayland), and Windows. XCap supports screenshot and video recording (WIP)."
 license = "Apache-2.0"
 documentation = "https://docs.rs/xcap"
 homepage = "https://github.com/nashaofu/xcap"
@@ -10,6 +10,9 @@ repository = "https://github.com/nashaofu/xcap.git"
 keywords = ["screen", "monitor", "window", "capture", "image"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "xcap"
 
 [features]
 image = ["image/default"]
@@ -19,17 +22,6 @@ image = { version = "0.25", default-features = false, features = ["png"] }
 log = "0.4"
 scopeguard = "1.2"
 thiserror = "2.0"
-
-[target.'cfg(target_os = "macos")'.dependencies]
-dispatch2 = "0.3"
-objc2 = "0.6"
-objc2-app-kit = "0.3"
-objc2-core-foundation = "0.3"
-objc2-core-graphics = "0.3"
-objc2-foundation = "0.3"
-objc2-av-foundation = "0.3"
-objc2-core-media = "0.3"
-objc2-core-video = "0.3"
 
 [target.'cfg(target_os = "windows")'.dependencies]
 widestring = "1.2"

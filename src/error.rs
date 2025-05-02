@@ -43,10 +43,6 @@ pub enum XCapError {
     #[error(transparent)]
     PipewireError(#[from] pipewire::Error),
 
-    #[cfg(target_os = "macos")]
-    #[error("Objc2CoreGraphicsCGError {:?}", 0)]
-    Objc2CoreGraphicsCGError(objc2_core_graphics::CGError),
-
     #[cfg(target_os = "windows")]
     #[error(transparent)]
     WindowsCoreError(#[from] windows::core::Error),

@@ -1,5 +1,10 @@
 # XCap
 
+This is a fork from https://github.com/nashaofu/xcap.
+It's aiming to be a simple cross-platform screenshot tool binary with less features than the original lib for size reasons.
+
+## Upstream original README
+
 English | [简体中文](README-zh_CN.md)
 
 XCap is a cross-platform screen capture library written in Rust. It supports Linux (X11, Wayland), MacOS, and Windows. XCap supports screenshot and video recording (WIP).
