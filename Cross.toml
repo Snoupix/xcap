@@ -1,0 +1,8 @@
+[build.env]
+passthrough = ["PKG_CONFIG_PATH"]
+
+[target.x86_64-unknown-linux-gnu]
+image = "cross-rs-alpine:latest"
+
+[target.i686-unknown-linux-gnu]
+image = "cross-rs-alpine:latest"

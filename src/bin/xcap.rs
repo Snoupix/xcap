@@ -7,14 +7,19 @@ fn normalized(filename: String) -> String {
 }
 
 fn main() {
-    let mut monitors = Monitor::all().expect("Failed to get Monitors").into_iter();
+    let monitors = Monitor::all().expect("Failed to get Monitors");
 
-    if !monitors.any(|monitor| monitor.is_primary().is_ok_and(|b| b)) {
+    if !monitors
+        .iter()
+        .any(|monitor| monitor.is_primary().is_ok_and(|b| b))
+    {
         eprintln!("No primary monitor found");
-        return;
+
+        std::process::exit(1);
     }
 
     let monitor = monitors
+        .into_iter()
         .find(|monitor| monitor.is_primary().unwrap())
         .unwrap();
 
