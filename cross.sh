@@ -17,5 +17,5 @@ done
 docker images --format '{{json .Repository}} {{json .ID}}' | sed 's/"//gm' | rg 'cross-rs' | while read -r line; do
     data=($line);
     echo "Cleaning docker image ${data[0]} with ID ${data[1]}..."
-    # docker rmi ${data[1]}
+    docker rmi ${data[1]}
 done
